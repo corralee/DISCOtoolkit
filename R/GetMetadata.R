@@ -38,6 +38,7 @@ FilterDiscoMetadata <- function(sample_id = NULL,
 
   message("Fetching sample metadata")
   metadata = read.csv(paste0(getOption("disco_url"), "toolkit/getSampleMetadata"), sep = "\t")
+  metadata = metadata[!duplicated(metadata$sample_id),]
   rownames(metadata) = metadata$sample_id
 
   message("Filtering sample")
